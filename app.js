@@ -45,7 +45,7 @@ function initThree() {
   controls.enableDamping = true;
   controls.dampingFactor = 0.12;
 
-  // Load Earth texture for colored Earth
+  // Load Earth texture
   const loader = new THREE.TextureLoader();
   const earthTexture = loader.load('earth_daymap.jpg');
   const earthMaterial = new THREE.MeshPhongMaterial({ map: earthTexture });
@@ -189,7 +189,7 @@ function createShockwave(latlng, impactRadiusKms) {
       const opacity = 0.8 * (1 - elapsed / duration);
       shockwaveCircle.setRadius(radius);
       shockwaveCircle.setStyle({
-        color: rgba(255,69,0,${opacity}),
+        color: `rgba(255,69,0,${opacity})`,
         fillOpacity: 0.3 * (1 - elapsed / duration),
       });
       requestAnimationFrame(animateShockwave);
@@ -273,7 +273,7 @@ function updateSimulation() {
   craterRadius_km = Math.max(0.01, craterDiameter_m / 2000);
 
   let impactLat = 0,
-    impactLon = 0;
+      impactLon = 0;
   if (impactMarker) {
     impactLat = impactMarker.getLatLng().lat;
     impactLon = impactMarker.getLatLng().lng;
